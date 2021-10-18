@@ -25,4 +25,11 @@ namespace Veem_Lab1
       return temp;
     }
   }
+  class Program
+  {
+    static void Main()
+    {
+
+    } 
+  }
 }

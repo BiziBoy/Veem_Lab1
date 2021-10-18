@@ -4,26 +4,51 @@ namespace Task_2
 {
   interface IInheritance
   {
-    public virtual string GetInfo()
+    public string GetInfo()
     {
-      return  "Parent.";
+      return  "Parent";
     }
   }
 
   struct Base: IInheritance
   {
-    public string GetInfo()
+    string GetInfo()
     {
+      Console.WriteLine("Base");
       return "Base";
+    }
+    public Base(Base _b)
+    {
+      GetInfo();
     }
   }
 
+  struct A: IInheritance
+  {
+    public A(IInheritance _a)
+    {
+      if (_a is Base)
+      {
+        Base _bbase = new Base((Base)_a);
+      }
+      else
+      {
+        GetInfo();
+      }
+      string GetInfo()
+      {
+        Console.WriteLine("A");
+        return "A";
+      }
+    }
+  }
 
   class Program
   {
-    static void Main(string[] args)
+    static void Main()
     {
-      
+      IInheritance b = new Base();
+      A a = new A(b);
     }
   }
 }
